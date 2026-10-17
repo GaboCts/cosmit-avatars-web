@@ -1,9 +1,15 @@
-import { Twitch, GitHub, Reddit, YouTube } from "../assets/Providers"
+const PROVIDER_URL = 'https://cosmitavatars.space/providers'
 
-export const PROVIDERS = [
-    { name: 'Twitch', icon: <Twitch />},
-    { name: 'GitHub', icon: <GitHub /> },
-    { name: 'Reddit', icon: <Reddit /> },
-    { name: 'YouTube', icon: <YouTube /> },
-    { name: 'X', icon: null },
-]
+export async function fetchProviders() {
+    const response = await fetch(PROVIDER_URL)
+    if (!response.ok) {
+        throw new Error(`Failed to load providers: ${response.status}`)
+    }
+    const data = await response.json()
+
+    return Object.values(data.providers).map(p => ({
+        name: p.provider,
+        logoUrl: p.logo_url,
+        slug: p.provider.toLowerCase().replace(/\s+/g, '')
+    }))
+}

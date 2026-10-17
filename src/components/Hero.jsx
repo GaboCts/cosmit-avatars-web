@@ -1,13 +1,16 @@
 import { useState, useRef, useEffect } from 'react'
-import { PROVIDERS } from '../data/Providers'
+import { fetchProviders } from '../data/Providers'
 import logoSrc from '../assets/logo.svg'
 
 const BASE_URL = 'https://cosmitavatars.space/avatar/'
 
 export function Hero() {
-    const [provider, setProvider] = useState(PROVIDERS[0])
+    const [providers, setProviders] = useState([])
+    const [provider, setProvider] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
     const [avatarUrl, setAvatarUrl] = useState(null)
+    const [isLoadingProviders, setIsLoadingProviders] = useState(true)
+    const [providersError, setProvidersError] = useState(null)
     const dropdownRef = useRef(null)
 
     useEffect(() => {
@@ -20,11 +23,22 @@ export function Hero() {
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
+    useEffect(() => {
+        fetchProviders()
+            .then(data => {
+                setProviders(data)
+                setProvider(data[0])
+            })
+            .catch(err => setProvidersError(err.message))
+            .finally(() => setIsLoadingProviders(false))
+    }, [])
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!provider) return
         const username = e.target.profile.value
         if (!username.trim()) return
-        const url = `${BASE_URL}${provider.name.toLowerCase()}/${username}`
+        const url = `${BASE_URL}${provider.slug}/${username}`
         setAvatarUrl(url)
     }
 
@@ -53,53 +67,69 @@ export function Hero() {
 
                     <span className="url-prefix">{BASE_URL}</span>
                     <div className="provider-dropdown" ref={dropdownRef}>
-                        <button
-                            type="button"
-                            className="provider-trigger"
-                            onClick={() => setIsOpen(!isOpen)}
-                            aria-expanded={isOpen}
-                            aria-haspopup="listbox"
-                        >
-                            {provider.icon && (
-                                <span className="provider-icon">{provider.icon}</span>
-                            )}
-                            <span className="provider-name">{provider.name}</span>
-                            <svg
-                                className={`dropdown-arrow ${isOpen ? 'open' : ''}`}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="m6 9 6 6 6-6"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </button>
+                        {isLoadingProviders ? (
+                            <button type="button" className="provider-trigger" disabled>
+                                <span className="provider-name">Loading providers...</span>
+                            </button>
+                        ) : providersError ? (
+                            <button type="button" className="provider-trigger" disabled>
+                                <span className="provider-name">Error loading providers</span>
+                            </button>
+                        ) : provider && (
+                            <>
+                                <button
+                                    type="button"
+                                    className="provider-trigger"
+                                    onClick={() => setIsOpen(!isOpen)}
+                                    aria-expanded={isOpen}
+                                    aria-haspopup="listbox"
+                                >
+                                    {provider.logoUrl ? (
+                                        <img className="provider-logo" src={provider.logoUrl} alt={provider.name} />
+                                    ) : (
+                                        provider.icon && <span className="provider-icon">{provider.icon}</span>
+                                    )}
+                                    <span className="provider-name">{provider.name}</span>
+                                    <svg
+                                        className={`dropdown-arrow ${isOpen ? 'open' : ''}`}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="m6 9 6 6 6-6"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
 
-                        {isOpen && (
-                            <ul className="provider-menu" role="listbox">
-                                {PROVIDERS.map((p) => (
-                                    <li key={p.name} role="option" aria-selected={p.name === provider.name}>
-                                        <button
-                                            type="button"
-                                            className={`provider-option ${p.name === provider.name ? 'active' : ''}`}
-                                            onClick={() => {
-                                                setProvider(p)
-                                                setIsOpen(false)
-                                            }}
-                                        >
-                                            {p.icon && (
-                                                <span className="provider-icon">{p.icon}</span>
-                                            )}
-                                            <span>{p.name}</span>
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
+                                {isOpen && (
+                                    <ul className="provider-menu" role="listbox">
+                                        {providers.map((p) => (
+                                            <li key={p.name} role="option" aria-selected={p.name === provider.name}>
+                                                <button
+                                                    type="button"
+                                                    className={`provider-option ${p.name === provider.name ? 'active' : ''}`}
+                                                    onClick={() => {
+                                                        setProvider(p)
+                                                        setIsOpen(false)
+                                                    }}
+                                                >
+                                                    {p.logoUrl ? (
+                                                        <img className="provider-logo" src={p.logoUrl} alt={p.name} />
+                                                    ) : (
+                                                        p.icon && <span className="provider-icon">{p.icon}</span>
+                                                    )}
+                                                    <span>{p.name}</span>
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
                         )}
                     </div>
 

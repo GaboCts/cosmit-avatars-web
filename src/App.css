@@ -247,10 +247,19 @@ h1 span {
     cursor: pointer;
     transition: background 0.15s;
     white-space: nowrap;
+    min-width: 165px;
 }
 
 .provider-trigger:hover {
     background: #1a1a20;
+}
+
+.provider-logo {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .provider-icon {
@@ -274,6 +283,7 @@ h1 span {
     color: #898697;
     transition: transform 0.2s;
     flex-shrink: 0;
+    margin-left: auto;
 }
 
 .dropdown-arrow.open {
@@ -663,13 +673,13 @@ h2 {
     }
 
     .provider-dropdown {
-        min-width: 120px;
         width: 20%;
         height: 40px;
         flex-direction: column;
     }
 
     .provider-trigger {
+        min-width: 120px;
         width: 100%;
         justify-content: space-between;
         height: 40px;
