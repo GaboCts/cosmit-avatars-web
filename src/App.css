@@ -376,34 +376,6 @@ h1 span {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.provider-tags {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.provider-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    color: #c1bfcb;
-    background: rgba(255, 255, 255, 0.025);
-    font-size: 11px;
-}
-
-.tag-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 3px;
-    background: #a69dff;
-}
-
 /* General sections */
 
 .section {
@@ -703,14 +675,6 @@ h2 {
         border-radius: 0;
         background: solid;
         flex-direction: column;
-    }
-
-    .provider-tags {
-        gap: 7px;
-    }
-
-    .provider-tag {
-        padding: 8px 9px;
     }
 
     .section {

@@ -1,4 +1,4 @@
-const PROVIDER_URL = 'https://cosmitavatars.space/providers'
+const PROVIDER_URL = 'http://localhost:3000/providers'
 
 export async function fetchProviders() {
     const response = await fetch(PROVIDER_URL)
