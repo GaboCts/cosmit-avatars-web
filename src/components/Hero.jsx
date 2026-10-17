@@ -36,7 +36,7 @@ export function Hero() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!provider) return
-        const username = e.target.profile.value
+        const username = e.target.profile.value.toLowerCase()
         if (!username.trim()) return
         const url = `${BASE_URL}${provider.slug}/${username}`
         setAvatarUrl(url)
