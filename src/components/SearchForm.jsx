@@ -3,9 +3,13 @@ import { useAvatarStore } from '../store/avatarStore.js'
 import { useProviderStore } from '../store/providerStore..js'
 import { ProviderDropDown } from './ProviderDropDown.jsx'
 
-const BASE_URL = 'http://localhost:3000/avatar/'
+const BASE_URL = 'https://cosmitavatars.space/avatar/'
+
+const VALID_INPUT_TYPES = ['text', 'email', 'number', 'url', 'tel', 'search', 'password']
 
 function SearchRow () {
+    const { provider } = useProviderStore()
+
     return (
         <div className="search-row">
             <span className="url-prefix">{BASE_URL}</span>
@@ -16,10 +20,11 @@ function SearchRow () {
             <div className="input-wrapper">
 
                 <input
+                    key={provider?.slug}
                     id="profile"
                     name="profile"
-                    type="text"
-                    placeholder="Username..."
+                    type={VALID_INPUT_TYPES.includes(provider?.inputType) ? provider.inputType : 'text'}
+                    placeholder={provider?.inputType || 'Username'}
                     autoComplete="off"
                 />
             </div>
@@ -44,9 +49,9 @@ export function SearchForm () {
 
     return (
         <>
-            <form className="search-panel" action="#" method="get" onSubmit={handleSubmit}>
+            <form className="search-panel" action="#" id="try" method="get" onSubmit={handleSubmit}>
                 <label className="search-label" htmlFor="profile">
-                    Look for a profile picture.
+                    Try looking for a profile picture
                 </label>
 
                 <SearchRow />

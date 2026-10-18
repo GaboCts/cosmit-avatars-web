@@ -1,4 +1,4 @@
-const PROVIDER_URL = 'http://localhost:3000/providers'
+const PROVIDER_URL = 'https://cosmitavatars.space/providers'
 
 export async function fetchProviders() {
     const response = await fetch(PROVIDER_URL)
@@ -10,6 +10,7 @@ export async function fetchProviders() {
     return Object.values(data.providers).map(p => ({
         name: p.provider,
         logoUrl: p.logo_url,
-        slug: p.provider.toLowerCase().replace(/\s+/g, '')
+        slug: p.provider.toLowerCase().replace(/\s+/g, ''),
+        inputType: p.input_type
     }))
 }

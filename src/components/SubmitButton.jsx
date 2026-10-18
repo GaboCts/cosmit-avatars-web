@@ -1,4 +1,5 @@
 export function SubmitButton () {
+
     return (
         <button className="search-button" type="submit">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
