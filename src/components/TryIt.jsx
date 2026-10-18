@@ -1,5 +1,5 @@
-import { AvatarResult } from "./AvatarResult";
-import { SearchForm } from "./SearchForm";
+import { AvatarResult } from './AvatarResult'
+import { SearchForm } from './SearchForm'
 
 export function TryIt () {
     return (

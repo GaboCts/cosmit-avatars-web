@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import logoSrc from '../assets/logo.svg'
 import { useAvatarStore } from '../store/avatarStore'
-import { useProviderStore } from '../store/providerStore.'
-
-const FORMATS = [
-    { id: 'html', label: 'HTML' },
-]
+import { useProviderStore } from '../store/providerStore'
+import { useOutputStore } from '../store/outputStore'
+import { BASE_URL, FORMATS } from '../data/config.js'
 
 export function AvatarResult () {
     const { avatarUrl } = useAvatarStore()
@@ -14,6 +12,7 @@ export function AvatarResult () {
     const [isOpen, setIsOpen] = useState(false)
     const [copied, setCopied] = useState(false)
     const dropdownRef = useRef(null)
+    const { inputText } = useOutputStore()
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -25,19 +24,28 @@ export function AvatarResult () {
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
-    const getOutput = () => {
-        if (!avatarUrl) return ''
-        const alt = provider?.name || 'avatar'
+    const username = inputText.trim().toLowerCase()
+    const alt = `${provider?.name ?? 'avatar'} profile picture`
+
+    let output = ''
+
+    if (provider) {
         switch (format.id) {
             case 'html':
-                return `<img src="${avatarUrl}" alt="${alt} profile picture" />`
-            default:
-                return avatarUrl
+                output = username == ''
+                    ? `<img src="${BASE_URL}${provider.slug}/${provider.inputType}" />`
+                    : `<img src="${BASE_URL}${provider.slug}/${username}" />`
+                break
+            case 'javascript':
+                output = username == ''
+                    ? `await fetch(${BASE_URL}${provider.slug}/${provider.inputType}')`
+                    : `await fetch('${BASE_URL}${provider.slug}/${username}')`
+                break
+            default: output = `<img src="${BASE_URL}${provider.slug}/${provider.inputType}" alt="${alt}" />`
         }
     }
 
     const handleCopy = async () => {
-        const output = getOutput()
         if (!output) return
         try {
             await navigator.clipboard.writeText(output)
@@ -101,13 +109,13 @@ export function AvatarResult () {
                     )}
                 </div>
 
-                <p className="image-source-data">{getOutput()}</p>
+                <p className="image-source-data">{output}</p>
 
                 <button
                     type="button"
                     className="image-source-copy"
                     onClick={handleCopy}
-                    disabled={!avatarUrl}
+                    disabled={!output}
                     aria-label="Copy"
                     title={copied ? 'Copied!' : 'Copy'}
                 >

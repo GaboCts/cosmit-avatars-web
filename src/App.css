@@ -66,7 +66,7 @@
 /* Hero */
 
 .hero {
-    padding: 180px 0 75px;
+    padding: 150px 0 30px;
     text-align: center;
 }
 
@@ -122,6 +122,10 @@ h1 span {
     border: 1px solid var(--border);
     border-radius: 18px;
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+}
+
+#try {
+    scroll-margin-top: 220px;
 }
 
 .search-label {
@@ -422,7 +426,7 @@ h1 span {
     color: var(--accent-light);
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
-    white-space: normal;
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
     min-width: 0;
 }

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { fetchProviders } from '../data/Providers'
-import { useProviderStore } from '../store/providerStore.'
+import { useProviderStore } from '../store/providerStore.js'
 
 export function ProviderDropDown () {
     const [isOpen, setIsOpen] = useState(false)
