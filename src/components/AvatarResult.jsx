@@ -38,7 +38,7 @@ export function AvatarResult () {
                 break
             case 'javascript':
                 output = username == ''
-                    ? `await fetch(${BASE_URL}${provider.slug}/${provider.inputType}')`
+                    ? `await fetch('${BASE_URL}${provider.slug}/${provider.inputType}')`
                     : `await fetch('${BASE_URL}${provider.slug}/${username}')`
                 break
             default: output = `<img src="${BASE_URL}${provider.slug}/${provider.inputType}" alt="${alt}" />`
