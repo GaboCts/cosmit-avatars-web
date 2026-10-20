@@ -1,6 +1,6 @@
 import { Developers } from '../components/Developers'
 import { Hero } from '../components/Hero'
-import { HowToUse } from '../components/HowToUse'
+import { HowItWorks } from '../components/HowItWorks'
 import { Providers } from '../components/Providers'
 import { TryIt } from '../components/TryIt'
 
@@ -9,8 +9,8 @@ export default function HomePage () {
         <main>
             <Hero />
             <TryIt />
+            <HowItWorks />
             {/* <Providers />
-            <HowToUse />
             <Developers /> */}
         </main>
     )
