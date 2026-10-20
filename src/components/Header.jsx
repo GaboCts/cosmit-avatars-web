@@ -14,7 +14,12 @@ export function Header () {
                             behavior: 'smooth'
                         })
                     }}>Try it</a>
-                    <a href="#how-it-works">How it works</a>
+                    <a href="#how-it-works" onClick={(e) => {
+                        e.preventDefault()
+                        document.getElementById('how-it-works')?.scrollIntoView({
+                            behavior: 'smooth'
+                        })
+                    }}>How it works</a>
                     <a href="#developers">Developers</a>
                     <a className="nav-button" href="https://github.com/GaboCts/cosmit-avatars-web" target="_blank" >Repository</a>
                 </div>
