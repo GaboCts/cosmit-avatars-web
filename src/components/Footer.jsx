@@ -5,7 +5,7 @@ export function Footer () {
                 <div className="footer-main">
                     <div>
                         <a className="title" href="#" aria-label="Cosmit Avatars">
-                            <img src="src\assets\logo.svg" alt="Cosmit avatars logo" className="title-logo" />
+                            <img src="/logo.svg" alt="Cosmit avatars logo" className="title-logo" />
                             <span className="title-name">Cosmit<span> avatars</span></span>
                         </a>
 

@@ -55,7 +55,7 @@ const files = {
   <main class="card">
     <h1>¡Here is your avatar!</h1>
 
-    <img class="avatar" src="https://cosmitavatars.space/avatar/twitch/xcosmo_" />
+    <img src="https://cosmitavatars.space/avatar/twitch/xcosmo_" />
 
   </main>
 </body>

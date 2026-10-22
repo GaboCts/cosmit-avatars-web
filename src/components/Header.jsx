@@ -3,7 +3,7 @@ export function Header () {
         <header className="header">
             <nav className="navbar container" aria-label="Main navigation">
                 <a className="title" href="/" aria-label="Cosmit Avatars">
-                    <img src="src\assets\logo.svg" alt="Cosmit avatars logo" className="title-logo" />
+                    <img src="/logo.svg" alt="Cosmit avatars logo" className="title-logo" />
                     <span className="title-name">Cosmit<span> avatars</span></span>
                 </a>
 
