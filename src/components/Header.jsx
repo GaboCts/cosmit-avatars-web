@@ -20,8 +20,13 @@ export function Header () {
                             behavior: 'smooth'
                         })
                     }}>How it works</a>
-                    <a href="#developers">Developers</a>
-                    <a className="nav-button" href="https://github.com/GaboCts/cosmit-avatars-web" target="_blank" >Repository</a>
+                    <a href="#provider-list" onClick={(e) => {
+                        e.preventDefault()
+                        document.getElementById('provider-list')?.scrollIntoView({
+                            behavior: 'smooth'
+                        })
+                    }}>Providers</a>
+                    <a className="nav-button" href="https://github.com/GaboCts/cosmit-avatars-web" target="_blank" rel="noopener noreferrer" >Repository</a>
                 </div>
             </nav>
         </header>
