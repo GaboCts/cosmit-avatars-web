@@ -33,7 +33,7 @@ Replace the following parameters:
 
 **Xbox**
 ```text
-https://cosmitavatars.space/avatar/xbox/xcosmo_
+https://cosmitavatars.space/avatar/xbox/xantocosmobl
 ```
 
 **Twitch**
@@ -120,13 +120,11 @@ Cosmit Avatars can be useful for:
 
 ## 🤝 Contributing
 
-Contributions, suggestions, and bug reports are welcome.
+Suggestions, and bug reports are welcome.
 
-If you find an issue or have an idea to improve Cosmit Avatars, consider opening an issue or submitting a pull request in the project's repository.
+If you find an issue or have an idea to improve Cosmit Avatars, consider opening an issue in the project's repository.
 
 ## 📄 License
-
-Please refer to the repository's license file for the applicable terms of use.
 
 ---
 
