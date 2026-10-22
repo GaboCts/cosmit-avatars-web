@@ -3,9 +3,11 @@ import { useRouter } from './useRouter'
 export function useNavigateToSection () {
     const { currentPath, navigateTo } = useRouter()
 
-    const navigateToSection = (sectionId) => {
-        if (currentPath !== '/') {
-            navigateTo('/', {
+    const navigateToSection = (e, sectionId, path) => {
+        e.preventDefault()
+
+        if (currentPath !== path) {
+            navigateTo(path, {
                 state: { scrollTo: sectionId }
             })
             return

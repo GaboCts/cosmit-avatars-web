@@ -7,6 +7,7 @@ import './App.css'
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'))
+const Docs = lazy(() => import('./pages/Docs/Docs.jsx'))
 
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Header />
         <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/docs" element={<Docs />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
