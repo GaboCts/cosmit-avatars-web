@@ -6,7 +6,7 @@ import { Footer } from './components/Footer'
 import './App.css'
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'))
 
 
 export default function App() {

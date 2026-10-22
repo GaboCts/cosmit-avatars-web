@@ -564,7 +564,6 @@ h2 {
 .providers-grid button {
     display: flex;
     border: solid 2px var(--border);
-    text-align: start;
     align-items: center;
     gap: 8px;
     height: 60px;
