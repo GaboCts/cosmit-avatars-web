@@ -40,17 +40,17 @@ export function Footer () {
 
                     <nav className="footer-links" aria-label="Footer links">
                         <a href="#try" onClick={(e) => {
-                            e.preventDefault()
-                            navigateToSection('try')
+                            navigateToSection(e, 'try', '/')
                         }}>Try it</a>
                         <a href="#how-it-works" onClick={(e) => {
-                            e.preventDefault()
-                            navigateToSection('how-it-works')
+                            navigateToSection(e, 'how-it-works', '/')
                         }}>How it works</a>
                         <a href="#provider-list" onClick={(e) => {
-                            e.preventDefault()
-                            navigateToSection('provider-list')
+                            navigateToSection(e, 'provider-list', '/')
                         }}>Providers</a>
+                        <Link href="/docs">
+                            Docs
+                        </Link>
                         <a href="mailto:contact@cosmitavatars.space">Contact</a>
                     </nav>
                 </div>

@@ -35,17 +35,17 @@ export function Header () {
 
                 <div className="nav-links">
                     <a href="#try" onClick={(e) => {
-                        e.preventDefault()
-                        navigateToSection('try')
+                        navigateToSection(e, 'try', '/')
                     }}>Try it</a>
                     <a href="#how-it-works" onClick={(e) => {
-                        e.preventDefault()
-                        navigateToSection('how-it-works')
+                        navigateToSection(e, 'how-it-works', '/')
                     }}>How it works</a>
                     <a href="#provider-list" onClick={(e) => {
-                        e.preventDefault()
-                        navigateToSection('provider-list')
+                        navigateToSection(e, 'provider-list', '/')
                     }}>Providers</a>
+                    <Link href="/docs">
+                        Docs
+                    </Link>
                     <a className="nav-button" href="https://github.com/GaboCts/cosmit-avatars-web" target="_blank" rel="noopener noreferrer" >Repository</a>
                 </div>
             </nav>
