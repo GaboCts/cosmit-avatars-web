@@ -11,6 +11,7 @@ export async function fetchProviders() {
         name: p.provider,
         logoUrl: p.logo_url,
         slug: p.provider.toLowerCase().replace(/\s+/g, ''),
-        inputType: p.input_type
+        inputType: p.input_type,
+        providerSite: p.provider_site
     }))
 }

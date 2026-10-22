@@ -25,7 +25,10 @@ export function Providers () {
                         setProvider(p)
                     }}>
                         <img className="provider-logo" src={p.logoUrl} alt={p.name} />
-                        <span>{p.name}</span>
+                        <div className="provider-info">
+                            <span className="provider-name">{p.name}</span>
+                            <p className="provider-site">{p.providerSite}</p>
+                        </div>
                     </button>
                 ))}
             </div>

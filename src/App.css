@@ -556,9 +556,8 @@ h2 {
 
 .providers-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 16px;
-    font-size: 14px;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 16px;
     width: 100%;
 }
 
@@ -569,11 +568,10 @@ h2 {
     align-items: center;
     gap: 8px;
     height: 60px;
-    width: 120px;
+    width: 150px;
     border-radius: 7px;
     background: transparent;
     color: #c0becb;
-    font-size: 14px;
     text-align: left;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
@@ -583,9 +581,29 @@ h2 {
     background: rgba(129, 117, 255, 0.1);
     color: white;
 }
+
 .provider-menu-provider{
     display: flex;
-    padding-left: 12px;
+    padding-left: 10px;
+}
+
+.provider-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+}
+
+.provider-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.provider-site {
+    margin: 0;
+    font-size: 11px;
+    color: #888;
 }
 
 /* Footer */
