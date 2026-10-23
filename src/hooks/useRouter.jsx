@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router'
 
-export function useRouter() {
+export function useRouter () {
     const navigate = useNavigate()
     const location = useLocation()
 

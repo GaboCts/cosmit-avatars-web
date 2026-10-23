@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link as NavLink, useLocation } from 'react-router'
 
-export function Link({href, children, ...restOfProps}) {
+export function Link ({href, children, ...restOfProps}) {
     const location = useLocation()
 
     useEffect(() => {

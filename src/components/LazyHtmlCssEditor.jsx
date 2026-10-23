@@ -3,7 +3,7 @@ import styles from './LazyHtmlCssEditor.module.css'
 
 const HtmlCssEditor = lazy(() => import('./HtmlCssEditor'))
 
-export function LazyHtmlCssEditor() {
+export function LazyHtmlCssEditor () {
     const [isOpen, setIsOpen] = useState(false)
 
     return (

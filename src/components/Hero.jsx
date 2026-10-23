@@ -1,4 +1,4 @@
-export function Hero() {
+export function Hero () {
 
     return (
         <section className="hero container" id="search">

@@ -98,7 +98,7 @@ img {
     },
 }
 
-export default function HtmlCssEditor() {
+export default function HtmlCssEditor () {
     return (
         <section className={styles['html-css-editor']}>
             <Sandpack

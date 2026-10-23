@@ -1,6 +1,6 @@
 const PROVIDER_URL = 'https://cosmitavatars.space/providers'
 
-export async function fetchProviders() {
+export async function fetchProviders () {
     const response = await fetch(PROVIDER_URL)
     if (!response.ok) {
         throw new Error(`Failed to load providers: ${response.status}`)

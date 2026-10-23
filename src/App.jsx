@@ -10,7 +10,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'))
 const Docs = lazy(() => import('./pages/Docs/Docs.jsx'))
 
 
-export default function App() {
+export default function App () {
   return (
     <>
         <Header />

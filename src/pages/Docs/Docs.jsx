@@ -36,7 +36,7 @@ const navigation = [
     }
 ]
 
-export default function Docs() {
+export default function Docs () {
     const [activeSection, setActiveSection] = useState('introduction')
     const { navigateToSection } = useNavigateToSection()
 
