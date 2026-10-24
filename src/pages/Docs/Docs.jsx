@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react'
 import styles from './Docs.module.css'
 import { Hero } from '../../components/Hero'
-import { useNavigateToSection } from '../../hooks/useNavigateToSection'
 
 const navigation = [
     {
@@ -17,35 +16,66 @@ const navigation = [
         title: 'Providers',
         links: [
             { id: 'supported-providers', label: 'Supported Providers' },
-            { id: 'provider-routes', label: 'Provider Routes' }
+            { id: 'provider-details', label: 'Provider Details' }
         ]
     },
     {
         title: 'Usage Guide',
         links: [
             { id: 'url-structure', label: 'URL Structure' },
-            { id: 'examples', label: 'Examples' }
+            { id: 'retrieving-avatars', label: 'Retrieving Avatars' },
+            { id: 'examples', label: 'Examples' },
+            { id: 'error-handling', label: 'Error Handling' }
+        ]
+    },
+    {
+        title: 'Development',
+        links: [
+            { id: 'installation', label: 'Installation' },
+            { id: 'configuration', label: 'Configuration' },
+            { id: 'contributing', label: 'Contributing' }
         ]
     },
     {
         title: 'Project',
         links: [
-            { id: 'contributing', label: 'Contributing' },
-            { id: 'license', label: 'License' }
+            { id: 'license', label: 'License' },
+            { id: 'acknowledgements', label: 'Acknowledgements' }
         ]
     }
 ]
 
-export default function Docs () {
-    const [activeSection, setActiveSection] = useState('introduction')
-    const { navigateToSection } = useNavigateToSection()
+const avatarExamples = [
+    {
+        provider: 'Xbox',
+        username: 'xcosmo_',
+        url: 'https://cosmitavatars.space/avatar/xbox/xcosmo_'
+    },
+    {
+        provider: 'Twitch',
+        username: 'xcosmo_',
+        url: 'https://cosmitavatars.space/avatar/twitch/xcosmo_'
+    },
+    {
+        provider: 'GitHub',
+        username: 'gabocts',
+        url: 'https://cosmitavatars.space/avatar/github/gabocts'
+    }
+]
+
+export default function Dox () {
+    const [activeSection, setActiveSection] =
+        useState('introduction')
 
     useEffect(() => {
-        const sections = navigation.flatMap(group => group.links)
+        const elements = navigation
+            .flatMap(group => group.links)
+            .map(link => document.getElementById(link.id))
+            .filter(Boolean)
 
         const observer = new IntersectionObserver(
-            (entries) => {
-                const visibleSections = entries
+            entries => {
+                const visible = entries
                     .filter(entry => entry.isIntersecting)
                     .sort(
                         (a, b) =>
@@ -53,26 +83,35 @@ export default function Docs () {
                             b.boundingClientRect.top
                     )
 
-                if (visibleSections.length > 0) {
-                    setActiveSection(visibleSections[0].target.id)
+                if (visible.length > 0) {
+                    setActiveSection(visible[0].target.id)
                 }
             },
             {
-                rootMargin: '-80px 0px -65% 0px',
+                rootMargin: '-100px 0px -65% 0px',
                 threshold: 0
             }
         )
 
-        sections.forEach(({ id }) => {
-            const element = document.getElementById(id)
-
-            if (element) {
-                observer.observe(element)
-            }
-        })
+        elements.forEach(element => observer.observe(element))
 
         return () => observer.disconnect()
     }, [])
+
+    const handleNavigation = (event, id) => {
+        event.preventDefault()
+
+        const target = document.getElementById(id)
+
+        if (!target) return
+
+        setActiveSection(id)
+
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    }
 
     return (
         <main className={styles.main__content}>
@@ -81,7 +120,7 @@ export default function Docs () {
                 aria-label="Documentation sidebar"
             >
                 <nav aria-label="Documentation navigation">
-                    {navigation.map((group) => (
+                    {navigation.map(group => (
                         <div
                             key={group.title}
                             className={styles.sidebar__group}
@@ -91,7 +130,7 @@ export default function Docs () {
                             </h2>
 
                             <ul className={styles.sidebar__list}>
-                                {group.links.map((link) => (
+                                {group.links.map(link => (
                                     <li key={link.id}>
                                         <a
                                             href={`#${link.id}`}
@@ -106,10 +145,11 @@ export default function Docs () {
                                                     ? 'location'
                                                     : undefined
                                             }
-                                            onClick={(e) => {
-                                                    navigateToSection(e, link.id, '/docs')
-                                                    setActiveSection(link.id)
-                                                }
+                                            onClick={event =>
+                                                handleNavigation(
+                                                    event,
+                                                    link.id
+                                                )
                                             }
                                         >
                                             {link.label}
@@ -154,7 +194,7 @@ export default function Docs () {
                         </p>
 
                         <p>
-                            This resource was developed by <a className={ styles.github__link } href="https://github.com/GaboCts" target="_blank" rel="noopener noreferrer" >Gabriel</a> to make the task of obtaining an avatar
+                            This resource was developed by <code><a className={ styles.blank__link } href="https://github.com/GaboCts" target="_blank" rel="noopener noreferrer" >Gabriel</a></code> to make the task of obtaining an avatar
                             and using it for various applications easier.
                         </p>
                     </section>
@@ -168,10 +208,33 @@ export default function Docs () {
                         </h2>
 
                         <p>
-                            Cosmit Avatars brings profile images from
-                            different platforms together in one place.
-                            Each provider has its own route for retrieving
-                            a user's avatar.
+                            Cosmit Avatars organizes avatar retrieval
+                            around providers and usernames. Each provider
+                            identifies a platform, while the username
+                            identifies the profile whose avatar you
+                            want to retrieve.
+                        </p>
+
+                        <h3>How It Works</h3>
+
+                        <ol>
+                            <li>
+                                Choose a supported provider.
+                            </li>
+                            <li>
+                                Identify the username of the profile.
+                            </li>
+                            <li>
+                                Build the corresponding avatar URL.
+                            </li>
+                            <li>
+                                Request the URL to retrieve the avatar.
+                            </li>
+                        </ol>
+
+                        <p>
+                            The exact behavior depends on the provider
+                            and the availability of the requested profile.
                         </p>
                     </section>
 
@@ -184,14 +247,40 @@ export default function Docs () {
                         </h2>
 
                         <p>
-                            To get started, choose a supported provider
-                            and enter the username of the profile you
-                            want to retrieve.
+                            The easiest way to use Cosmit Avatars is
+                            to open an avatar URL in your browser or
+                            use it as the source of an image element.
                         </p>
 
                         <p>
-                            Refer to the provider documentation for the
-                            correct route and username format.
+                            For example, the following URL requests
+                            the Twitch avatar for the username
+                            <code> <a className={ styles.blank__link } href="https://cosmitavatars.space/avatar/twitch/xcosmo_" target="_blank" rel="noopener noreferrer" >xCosmo_</a></code>.
+                        </p>
+
+                        <pre>
+                            <code>
+                                https://cosmitavatars.space/avatar/twitch/xcosmo_
+                            </code>
+                        </pre>
+
+                        <p>
+                            You can also display the avatar directly
+                            in an HTML document.
+                        </p>
+
+                        <pre>
+                            <code>{
+                            `<img 
+    src="https://cosmitavatars.space/avatar/twitch/xcosmo_"
+    alt="Twitch profile avatar"
+/>`}</code>
+                        </pre>
+
+                        <p>
+                            Replace the provider and username with
+                            the values for the profile you want to
+                            retrieve.
                         </p>
                     </section>
 
@@ -202,29 +291,15 @@ export default function Docs () {
                         <h2 className={styles.section__title}>
                             Supported Providers
                         </h2>
-
-                        <p>
-                            Cosmit Avatars supports multiple platforms.
-                            Each provider may have different requirements
-                            for identifying users and retrieving avatars.
-                        </p>
-
-                        {/* Add your provider list here. */}
                     </section>
 
                     <section
-                        id="provider-routes"
+                        id="provider-details"
                         className={styles.section}
                     >
                         <h2 className={styles.section__title}>
-                            Provider Routes
+                            Provider Details
                         </h2>
-
-                        <p>
-                            Each provider has a dedicated route for
-                            retrieving profile images. See the examples
-                            in the Usage Guide for more information.
-                        </p>
                     </section>
 
                     <section
@@ -234,13 +309,15 @@ export default function Docs () {
                         <h2 className={styles.section__title}>
                             URL Structure
                         </h2>
+                    </section>
 
-                        <p>
-                            Avatar URLs follow a provider-specific
-                            structure. Replace the provider and username
-                            with the values corresponding to the profile
-                            you want to retrieve.
-                        </p>
+                    <section
+                        id="retrieving-avatars"
+                        className={styles.section}
+                    >
+                        <h2 className={styles.section__title}>
+                            Retrieving Avatars
+                        </h2>
                     </section>
 
                     <section
@@ -250,11 +327,33 @@ export default function Docs () {
                         <h2 className={styles.section__title}>
                             Examples
                         </h2>
+                    </section>
 
-                        <p>
-                            Use this section to document real URLs,
-                            supported parameters, and example responses.
-                        </p>
+                    <section
+                        id="error-handling"
+                        className={styles.section}
+                    >
+                        <h2 className={styles.section__title}>
+                            Error Handling
+                        </h2>
+                    </section>
+
+                    <section
+                        id="installation"
+                        className={styles.section}
+                    >
+                        <h2 className={styles.section__title}>
+                            Installation
+                        </h2>
+                    </section>
+
+                    <section
+                        id="configuration"
+                        className={styles.section}
+                    >
+                        <h2 className={styles.section__title}>
+                            Configuration
+                        </h2>
                     </section>
 
                     <section
@@ -264,12 +363,6 @@ export default function Docs () {
                         <h2 className={styles.section__title}>
                             Contributing
                         </h2>
-
-                        <p>
-                            Contributions, improvements, and bug reports
-                            are welcome. Visit the project repository
-                            to learn how to contribute.
-                        </p>
                     </section>
 
                     <section
@@ -279,12 +372,15 @@ export default function Docs () {
                         <h2 className={styles.section__title}>
                             License
                         </h2>
+                    </section>
 
-                        <p>
-                            Cosmit Avatars is open source. Refer to the
-                            project's LICENSE file for the applicable
-                            terms of use, modification, and distribution.
-                        </p>
+                    <section
+                        id="acknowledgements"
+                        className={styles.section}
+                    >
+                        <h2 className={styles.section__title}>
+                            Acknowledgements
+                        </h2>
                     </section>
                 </div>
             </div>
