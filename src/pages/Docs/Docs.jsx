@@ -334,7 +334,8 @@ export default function Dox () {
                         </pre>
 
                         <p>
-                            Where you will receive a response from all supported providers with the following structure:
+                            You will receive a response containing a list of
+                            all compatible providers, structured as follows::
                         </p>
 
                         <pre>
