@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import styles from './Docs.module.css'
 import { Hero } from '../../components/Hero'
+import { useProviderStore } from '../../store/providerStore.js'
+import { fetchProviders } from '../../data/Providers.jsx'
 
 const navigation = [
     {
@@ -64,8 +66,17 @@ const avatarExamples = [
 ]
 
 export default function Dox () {
-    const [activeSection, setActiveSection] =
-        useState('introduction')
+    const [activeSection, setActiveSection] = useState('introduction')
+    const { providers, setProviders, setProvidersError, setIsLoadingProviders } = useProviderStore()
+    
+    useEffect(() => {
+        fetchProviders()
+            .then(data => {
+                setProviders(data)
+            })
+            .catch(err => setProvidersError(err.message))
+            .finally(() => setIsLoadingProviders())
+    }, [])
 
     useEffect(() => {
         const elements = navigation
@@ -215,7 +226,7 @@ export default function Dox () {
                             want to retrieve.
                         </p>
 
-                        <h3>How It Works</h3>
+                        <h3>How to find your avatar</h3>
 
                         <ol>
                             <li>
@@ -291,6 +302,54 @@ export default function Dox () {
                         <h2 className={styles.section__title}>
                             Supported Providers
                         </h2>
+
+                        <p>
+                            Cosmit Avatars supports avatar retrieval
+                            from multiple platforms. Each provider
+                            uses its own identifier in the avatar URL.
+                        </p>
+
+                        <p>
+                            Here is a list of all available providers:
+                        </p>
+
+                        <div className="providers-grid">
+                            {providers.map((p) => (
+                                <button key={p.name} className="provider-menu-button" >
+                                    <img className="provider-logo" src={p.logoUrl} alt={p.name} />
+                                    <div className="provider-info">
+                                        <span className="provider-name">{p.name}</span>
+                                        <p className="provider-site">{p.providerSite}</p>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+
+                        <p>
+                            You can also search for the list of providers using the following address:
+                        </p>
+
+                        <pre>
+                            <a href="https://cosmitavatars.space/providers" target="_blank" rel="noopener noreferrer" ><code>{`https://cosmitavatars.space/providers`}</code></a>
+                        </pre>
+
+                        <p>
+                            Where you will receive a response from all supported providers with the following structure:
+                        </p>
+
+                        <pre>
+                            <code>{`{
+    "providers": {
+        "{provider_slug}": {
+            "provider": "{Provider name}",
+            "logo_url": "https://cosmitavatars.space/providers/{provider_logo}.svg",
+            "input_type": "{Requested_input_type}",
+            "provider_site": "{provider_url}"
+        }
+    }
+}`}</code>
+                        </pre>
+
                     </section>
 
                     <section

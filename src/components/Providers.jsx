@@ -1,4 +1,4 @@
-import { useProviderStore } from "../store/providerStore"
+import { useProviderStore } from '../store/providerStore.js'
 
 export function Providers () {
     const { providers, setProvider } = useProviderStore()
@@ -17,7 +17,7 @@ export function Providers () {
 
             <div className="providers-grid">
                 {providers.map((p) => (
-                    <button key={p.name} className="provider-menu-provider" onClick={(e) => {
+                    <button key={p.name} className="provider-menu-button" onClick={(e) => {
                         e.preventDefault()
                         document.getElementById('try')?.scrollIntoView({
                             behavior: 'smooth'
