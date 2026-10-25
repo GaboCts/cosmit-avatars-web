@@ -350,7 +350,6 @@ export default function Dox () {
     }
 }`}</code>
                         </pre>
-
                     </section>
 
                     <section
@@ -360,6 +359,35 @@ export default function Dox () {
                         <h2 className={styles.section__title}>
                             Provider Details
                         </h2>
+
+                        <p>
+                            Each provider has a dedicated endpoint
+                            that identifies the provider requested.
+                            Use this route to access the information
+                            exposed by the application for a particular
+                            provider. This is an example for Twitch.
+                        </p>
+
+                        <pre>
+                            <code>
+                                <a href="https://cosmitavatars.space/providers/twitch" target="_blank" rel="noopener noreferrer" >{`https://cosmitavatars.space/providers/twitch`}</a>
+                            </code>
+                        </pre>
+
+                        <p>
+                            You will receive a response with the same structure for the provider you request.
+                        </p>
+
+                        <pre>
+                            <code>{`{
+    "twitch": {
+        "provider": "Twitch",
+        "logo_url": "https://cosmitavatars.space/providers/twitch.svg",
+        "input_type": "channel",
+        "provider_site": "twitch.tv"
+    }
+}`}</code>
+                        </pre>
                     </section>
 
                     <section
