@@ -79,7 +79,7 @@ section[id] {
     color: var(--accent);
     font-weight: 900;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .section {
@@ -108,10 +108,6 @@ section[id] {
     line-height: 1.8;
 }
 
-.section p {
-    margin-bottom: 1rem;
-}
-
 .section li + li {
     margin-top: 0.4rem;
 }
@@ -121,14 +117,13 @@ section[id] {
     padding: 1rem;
     border: 1px solid var(--border, #e5e7eb);
     border-radius: 0.75rem;
-    background: var(--bg, #f8fafc);
+    background: var(--surface, #f8fafc);
 }
 
 .section pre code {
     white-space: pre;
     overflow-wrap: normal;
 }
-
 
 @media (max-width: 768px) {
     .aside__content {
