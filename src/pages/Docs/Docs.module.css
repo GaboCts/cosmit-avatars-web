@@ -100,7 +100,13 @@ section[id] {
 .section h3 {
     margin-top: 1.75rem;
     margin-bottom: 0.75rem;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+}
+
+.section h4 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
 }
 
 .section p,
@@ -123,6 +129,13 @@ section[id] {
 .section pre code {
     white-space: pre;
     overflow-wrap: normal;
+}
+
+.error__image {
+    display: flex;
+    justify-self: center;
+    height: 250px;
+    width: 250px;
 }
 
 @media (max-width: 768px) {

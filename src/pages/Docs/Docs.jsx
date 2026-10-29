@@ -156,7 +156,7 @@ export default function Dox () {
                                                     ? 'location'
                                                     : undefined
                                             }
-                                            onClick={event =>
+                                            onClick={(event) =>
                                                 handleNavigation(
                                                     event,
                                                     link.id
@@ -397,6 +397,52 @@ export default function Dox () {
                         <h2 className={styles.section__title}>
                             URL Structure
                         </h2>
+
+                        <p>
+                            Avatar URLs follow this general pattern:
+                        </p>
+
+                        <pre>
+                            <code>
+                                https://cosmitavatars.space/avatar/:provider/:input_type
+                            </code>
+                        </pre>
+
+                        <p>
+                            The <code className={ styles.blank__link }>provider</code> accepts any entry within the list of
+                            <a
+                                className={ styles.blank__link }
+                                href="#supported-providers"
+                                onClick={(event) =>
+                                    handleNavigation(
+                                        event,
+                                        'supported-providers'
+                                    )
+                                }
+                            > providers</a>.
+                        </p>
+
+                        <p>
+                            The input type depends on the provider, here is the list of input types by provider:
+                        </p>
+                        
+                        <div className="providers-grid">
+                            {providers.map((p) => (
+                                <button key={p.name} className="provider-menu-button" >
+                                    <img className="provider-logo" src={p.logoUrl} alt={p.name} />
+                                    <div className="provider-info">
+                                        <span className="provider-name">{p.name}</span>
+                                        <p className="provider-input">{p.inputType}</p>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+
+                        <p>
+                            Provider identifiers and usernames must
+                            match the values expected by the respective
+                            provider integration.
+                        </p>
                     </section>
 
                     <section
@@ -406,6 +452,70 @@ export default function Dox () {
                         <h2 className={styles.section__title}>
                             Retrieving Avatars
                         </h2>
+
+                        <p>
+                            You can use avatar URLs wherever an image
+                            URL is accepted, including HTML documents
+                            and React applications.
+                        </p>
+
+                        <h3>HTML</h3>
+
+                        <pre>
+                            <code>{`<img
+  src="https://cosmitavatars.space/avatar/twitch/xcosmo_"
+  alt="Twitch profile avatar"
+/>`}</code>
+                        </pre>
+
+                        <h3>React</h3>
+
+                        <h4>Avatar.jsx</h4>
+
+                        <pre>
+                            <code>{`export function Avatar({ provider, input }) {
+    return (
+        <img
+            src={\`https://cosmitavatars.space/avatar/\${ provider }/\${ input }\`}
+            alt={\`\${ provider } profile avatar\`}
+        />
+    )
+}`}
+                            </code>
+                        </pre>
+                        
+                        <h4>App.jsx</h4>
+
+                        <pre>
+                            <code>{`import { Avatar } from './Avatar'
+                            
+export default function App () {
+    return (
+        <>
+            <Avatar provider="twitch" input="xcosmo_" />
+            <Avatar provider="github" input="gabocts" />
+            <Avatar provider="xbox" input="xanticosmobl" />
+        </>
+    )
+}`}
+                            </code>
+                        </pre>
+
+                        <p>
+                            Make sure to use valid usernames, otherwise,
+                            you will receive an image containing an error.
+                        </p>
+                        
+                        <pre>
+                            <code>
+                                <a href="https://cosmitavatars.space/avatar/twitch/asdljhasldjh" target="_blank" rel="noopener noreferrer" >{`https://cosmitavatars.space/avatar/twitch/asdljhasldjh`}</a>
+                            </code>
+                        </pre>
+
+                        <img
+                            className={ styles.error__image}
+                            src="https://cosmitavatars.space/avatar/twitch/asdljhasldjh" alt=""
+                        />
                     </section>
 
                     <section
@@ -415,6 +525,8 @@ export default function Dox () {
                         <h2 className={styles.section__title}>
                             Examples
                         </h2>
+
+                        
                     </section>
 
                     <section
