@@ -26,8 +26,7 @@ const navigation = [
         links: [
             { id: 'url-structure', label: 'URL Structure' },
             { id: 'retrieving-avatars', label: 'Retrieving Avatars' },
-            { id: 'examples', label: 'Examples' },
-            { id: 'error-handling', label: 'Error Handling' }
+            { id: 'examples', label: 'Examples' }
         ]
     },
     {
@@ -50,22 +49,22 @@ const navigation = [
 const avatarExamples = [
     {
         provider: 'Xbox',
-        username: 'xcosmo_',
-        url: 'https://cosmitavatars.space/avatar/xbox/xcosmo_'
+        username: 'xAntiCosmoBl',
+        url: 'https://cosmitavatars.space/avatar/xbox/xanticosmobl'
     },
     {
         provider: 'Twitch',
-        username: 'xcosmo_',
+        username: 'xCosmo_',
         url: 'https://cosmitavatars.space/avatar/twitch/xcosmo_'
     },
     {
         provider: 'GitHub',
-        username: 'gabocts',
+        username: 'GaboCts',
         url: 'https://cosmitavatars.space/avatar/github/gabocts'
     }
 ]
 
-export default function Dox () {
+export default function Docs () {
     const [activeSection, setActiveSection] = useState('introduction')
     const { providers, setProviders, setProvidersError, setIsLoadingProviders } = useProviderStore()
     
@@ -205,7 +204,15 @@ export default function Dox () {
                         </p>
 
                         <p>
-                            This resource was developed by <code><a className={ styles.blank__link } href="https://github.com/GaboCts" target="_blank" rel="noopener noreferrer" >Gabriel</a></code> to make the task of obtaining an avatar
+                            This resource was developed by <code>
+                            <a
+                                className={ styles.blank__link }
+                                href="https://github.com/GaboCts"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Gabriel
+                            </a>
+                            </code> to make the task of obtaining an avatar
                             and using it for various applications easier.
                         </p>
                     </section>
@@ -266,7 +273,15 @@ export default function Dox () {
                         <p>
                             For example, the following URL requests
                             the Twitch avatar for the username
-                            <code> <a className={ styles.blank__link } href="https://cosmitavatars.space/avatar/twitch/xcosmo_" target="_blank" rel="noopener noreferrer" >xCosmo_</a></code>.
+                            <code>
+                                <a
+                                    className={ styles.blank__link }
+                                    href="https://cosmitavatars.space/avatar/twitch/xcosmo_"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                > xCosmo_
+                                </a>
+                            </code>.
                         </p>
 
                         <pre>
@@ -330,12 +345,16 @@ export default function Dox () {
                         </p>
 
                         <pre>
-                            <a href="https://cosmitavatars.space/providers" target="_blank" rel="noopener noreferrer" ><code>{`https://cosmitavatars.space/providers`}</code></a>
+                            <a href="https://cosmitavatars.space/providers"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            ><code>{`https://cosmitavatars.space/providers`}</code>
+                            </a>
                         </pre>
 
                         <p>
                             You will receive a response containing a list of
-                            all compatible providers, structured as follows::
+                            all compatible providers, structured as follows:
                         </p>
 
                         <pre>
@@ -370,7 +389,12 @@ export default function Dox () {
 
                         <pre>
                             <code>
-                                <a href="https://cosmitavatars.space/providers/twitch" target="_blank" rel="noopener noreferrer" >{`https://cosmitavatars.space/providers/twitch`}</a>
+                                <a
+                                    href="https://cosmitavatars.space/providers/twitch"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >{`https://cosmitavatars.space/providers/twitch`}
+                                </a>
                             </code>
                         </pre>
 
@@ -508,7 +532,12 @@ export default function App () {
                         
                         <pre>
                             <code>
-                                <a href="https://cosmitavatars.space/avatar/twitch/asdljhasldjh" target="_blank" rel="noopener noreferrer" >{`https://cosmitavatars.space/avatar/twitch/asdljhasldjh`}</a>
+                                <a
+                                    href="https://cosmitavatars.space/avatar/twitch/asdljhasldjh"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >{`https://cosmitavatars.space/avatar/twitch/asdljhasldjh`}
+                                </a>
                             </code>
                         </pre>
 
@@ -526,16 +555,37 @@ export default function App () {
                             Examples
                         </h2>
 
-                        
-                    </section>
+                        <p>
+                            The following examples demonstrate how
+                            to construct avatar URLs for different
+                            providers.
+                        </p>
 
-                    <section
-                        id="error-handling"
-                        className={styles.section}
-                    >
-                        <h2 className={styles.section__title}>
-                            Error Handling
-                        </h2>
+                        {avatarExamples.map((example) => (
+                            <div key={example.provider}>
+                                <h3>{example.provider}</h3>
+
+                                <p>
+                                    Username: <code> {example.username}</code>
+                                </p>
+
+                                <pre>
+                                    <a
+                                        href={example.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    ><code>{example.url}</code>
+                                    </a>
+                                </pre>
+                            </div>
+                        ))}
+
+                        <p>
+                            These examples use real route patterns
+                            from Cosmit Avatars. The returned image
+                            depends on the provider and the requested
+                            username.
+                        </p>
                     </section>
 
                     <section
