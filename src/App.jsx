@@ -10,16 +10,16 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'))
 const Docs = lazy(() => import('./pages/Docs/Docs.jsx'))
 
 
-export default function App () {
-  return (
-    <>
-        <Header />
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-    </>
-  )
+export default function App() {
+    return (
+        <>
+            <Header />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/docs" element={<Docs />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+            <Footer />
+        </>
+    )
 }
