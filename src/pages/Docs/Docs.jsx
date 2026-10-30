@@ -646,6 +646,19 @@ export default function App () {
                         <h2 className={styles.section__title}>
                             Acknowledgements
                         </h2>
+
+                        <p>
+                            Cosmit Avatars builds on the work of
+                            the developers and services that make
+                            its integrations possible.
+                        </p>
+
+                        <p>
+                            All product names and trademarks belong
+                            to their respective owners. Their
+                            appearance in this documentation does
+                            not imply endorsement.
+                        </p>
                     </section>
                 </div>
             </div>
