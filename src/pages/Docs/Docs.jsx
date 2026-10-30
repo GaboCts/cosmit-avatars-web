@@ -32,8 +32,6 @@ const navigation = [
     {
         title: 'Development',
         links: [
-            { id: 'installation', label: 'Installation' },
-            { id: 'configuration', label: 'Configuration' },
             { id: 'contributing', label: 'Contributing' }
         ]
     },
@@ -589,30 +587,21 @@ export default function App () {
                     </section>
 
                     <section
-                        id="installation"
-                        className={styles.section}
-                    >
-                        <h2 className={styles.section__title}>
-                            Installation
-                        </h2>
-                    </section>
-
-                    <section
-                        id="configuration"
-                        className={styles.section}
-                    >
-                        <h2 className={styles.section__title}>
-                            Configuration
-                        </h2>
-                    </section>
-
-                    <section
                         id="contributing"
                         className={styles.section}
                     >
                         <h2 className={styles.section__title}>
                             Contributing
                         </h2>
+
+                        <p>
+                            Contributions help improve Cosmit Avatars
+                            and expand its capabilities. You can
+                            contribute by reporting bugs, suggesting
+                            improvements, improving documentation,
+                            or implementing support for additional
+                            providers.
+                        </p>
                     </section>
 
                     <section
@@ -622,6 +611,32 @@ export default function App () {
                         <h2 className={styles.section__title}>
                             License
                         </h2>
+
+                        <p>
+                            Cosmit Avatars is an open-source project.
+                            The permissions and conditions for using,
+                            modifying, and redistributing the software
+                            are defined by the license included in
+                            the
+                            <a
+                                className={ styles.blank__link }
+                                href="https://github.com/GaboCts/cosmit-avatars-web"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            > source repository</a>.
+                        </p>
+
+                        <p>
+                            Please review the project's
+                            <a
+                                className={ styles.blank__link }
+                                href="https://github.com/GaboCts/cosmit-avatars-web/blob/main/LICENSE.md"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            > LICENSE </a>
+                            file before redistributing the software
+                            or derivative works.
+                        </p>
                     </section>
 
                     <section
