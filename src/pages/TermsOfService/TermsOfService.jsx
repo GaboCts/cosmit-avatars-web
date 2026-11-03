@@ -23,18 +23,18 @@ const sections = [
     { id: 'contact', title: 'Contact Information' }
 ]
 
-export default function TermsOfService() {
+export default function TermsOfService () {
     const [activeSection, setActiveSection] = useState('acceptance')
     const { providers, setProviders, setProvidersError, setIsLoadingProviders } = useProviderStore()
 
     useEffect(() => {
-            fetchProviders()
-                .then(data => {
-                    setProviders(data)
-                })
-                .catch(err => setProvidersError(err.message))
-                .finally(() => setIsLoadingProviders())
-        }, [])
+        fetchProviders()
+            .then(data => {
+                setProviders(data)
+            })
+            .catch(err => setProvidersError(err.message))
+            .finally(() => setIsLoadingProviders())
+    }, [])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
