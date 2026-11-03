@@ -542,7 +542,7 @@ export default function TermsOfService() {
                         <p>
                             These Terms shall be governed by and
                             interpreted in accordance with the laws
-                            of <strong>[INSERT GOVERNING JURISDICTION]</strong>,
+                            of <strong>[]</strong>,
                             without regard to conflict-of-law principles.
                         </p>
 
@@ -550,7 +550,7 @@ export default function TermsOfService() {
                             Any disputes arising from or relating
                             to these Terms shall be handled by the
                             competent courts of{' '}
-                            <strong>[INSERT JURISDICTION AND VENUE]</strong>,
+                            <strong>[]</strong>,
                             subject to applicable consumer protection
                             laws and mandatory legal provisions.
                         </p>
