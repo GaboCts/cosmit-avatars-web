@@ -93,7 +93,7 @@ export default function TermsOfService () {
                 </p>
 
                 <span className={styles.updated}>
-                    Last updated: November 2, 2026
+                    Last updated: November 3, 2026
                 </span>
             </header>
 
@@ -562,8 +562,14 @@ export default function TermsOfService () {
                         </div>
 
                         <p className={styles.placeholder}>
-                            Operator: GaboCts
-                            <br />
+                            <strong>Operator:</strong>
+                            <a
+                                className={ styles.blank__link }
+                                href="https://github.com/GaboCts"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Gabriel
+                            </a>
                         </p>
                     </section>
 
@@ -572,9 +578,15 @@ export default function TermsOfService () {
                             Thank you for using Cosmit Avatars.
                         </p>
 
-                        <Link to="/">
-                            Back to home
-                        </Link>
+                        <div>
+                            <Link to="/privacy-policy">
+                                Privacy Policy
+                            </Link>
+
+                            <Link to="/">
+                                Back to home
+                            </Link>
+                        </div>
                     </footer>
                 </article>
             </div>
