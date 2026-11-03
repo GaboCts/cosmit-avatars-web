@@ -18,8 +18,6 @@ const sections = [
     { id: 'indemnification', title: 'Indemnification' },
     { id: 'privacy', title: 'Privacy' },
     { id: 'changes', title: 'Changes to These Terms' },
-    { id: 'governing-law', title: 'Governing Law' },
-    { id: 'severability', title: 'Severability' },
     { id: 'contact', title: 'Contact Information' }
 ]
 
@@ -537,7 +535,7 @@ export default function TermsOfService () {
                     </section>
 
                     <section id="contact">
-                        <h2>15. Contact Information</h2>
+                        <h2>13. Contact Information</h2>
 
                         <p>
                             If you have questions, concerns, or
