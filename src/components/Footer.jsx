@@ -42,7 +42,7 @@ export function Footer () {
                         </Link>
                         <a href="mailto:contact@cosmitavatars.space">Contact</a>
                         <Link href="/terms-of-service">
-                            Terms Of Service
+                            Terms of Service
                         </Link>
                         <Link to="/privacy-policy">
                             Privacy Policy
