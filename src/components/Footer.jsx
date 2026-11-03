@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { Link } from './Link'
 import { useRouter } from '../hooks/useRouter'
-import { useNavigateToSection } from '../hooks/useNavigateToSection'
 
 export function Footer () {
     const { state, currentPath, navigateTo } = useRouter()
-    const { navigateToSection } = useNavigateToSection()
 
     useEffect(() => {
         if (currentPath !== '/') return
@@ -39,15 +37,6 @@ export function Footer () {
                     </div>
 
                     <nav className="footer-links" aria-label="Footer links">
-                        <a href="#try" onClick={(e) => {
-                            navigateToSection(e, 'try', '/')
-                        }}>Try it</a>
-                        <a href="#how-it-works" onClick={(e) => {
-                            navigateToSection(e, 'how-it-works', '/')
-                        }}>How it works</a>
-                        <a href="#provider-list" onClick={(e) => {
-                            navigateToSection(e, 'provider-list', '/')
-                        }}>Providers</a>
                         <Link href="/docs">
                             Docs
                         </Link>
