@@ -589,6 +589,7 @@ h2 {
     align-items: flex-start;
     gap: 4px;
     min-width: 0;
+    line-height: 1.4;
 }
 
 .provider-name {

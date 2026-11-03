@@ -51,6 +51,9 @@ export function Footer () {
                         <Link href="/docs">
                             Docs
                         </Link>
+                        <Link href="/terms-of-service">
+                            Terms Of Service
+                        </Link>
                         <a href="mailto:contact@cosmitavatars.space">Contact</a>
                     </nav>
                 </div>
