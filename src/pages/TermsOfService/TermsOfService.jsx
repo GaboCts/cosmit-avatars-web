@@ -65,6 +65,21 @@ export default function TermsOfService() {
         return () => observer.disconnect()
     }, [])
 
+    const handleNavigation = (event, id) => {
+        event.preventDefault()
+
+        const target = document.getElementById(id)
+
+        if (!target) return
+
+        setActiveSection(id)
+
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    }
+
     return (
         <main className={styles.main__content}>
             <header className={styles.header}>
@@ -97,6 +112,12 @@ export default function TermsOfService() {
                                     activeSection === section.id
                                         ? styles.active
                                         : ''
+                                }
+                                onClick={(event) =>
+                                    handleNavigation(
+                                        event,
+                                        section.id
+                                    )
                                 }
                             >
                                 <span>{String(index + 1).padStart(2, '0')}</span>
