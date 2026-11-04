@@ -52,7 +52,7 @@ export function Footer () {
                             Docs
                         </Link>
                         <Link href="/terms-of-service">
-                            Terms Of Service
+                            Terms of Service
                         </Link>
                         <a href="mailto:contact@cosmitavatars.space">Contact</a>
                     </nav>
