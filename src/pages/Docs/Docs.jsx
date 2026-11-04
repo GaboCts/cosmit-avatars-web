@@ -46,9 +46,9 @@ const navigation = [
 
 const avatarExamples = [
     {
-        provider: 'Xbox',
-        username: 'xAntiCosmoBl',
-        url: 'https://cosmitavatars.space/avatar/xbox/xanticosmobl'
+        provider: 'GitHub',
+        username: 'GaboCts',
+        url: 'https://cosmitavatars.space/avatar/github/gabocts'
     },
     {
         provider: 'Twitch',
@@ -56,9 +56,9 @@ const avatarExamples = [
         url: 'https://cosmitavatars.space/avatar/twitch/xcosmo_'
     },
     {
-        provider: 'GitHub',
-        username: 'GaboCts',
-        url: 'https://cosmitavatars.space/avatar/github/gabocts'
+        provider: 'Xbox',
+        username: 'xAntiCosmoBl',
+        url: 'https://cosmitavatars.space/avatar/xbox/xanticosmobl'
     }
 ]
 
@@ -123,64 +123,67 @@ export default function Docs () {
 
     return (
         <main className={styles.main__content}>
-            <aside
-                className={styles.aside__content}
-                aria-label="Documentation sidebar"
-            >
-                <nav aria-label="Documentation navigation">
-                    {navigation.map(group => (
-                        <div
-                            key={group.title}
-                            className={styles.sidebar__group}
-                        >
-                            <h2 className={styles.sidebar__title}>
-                                {group.title}
-                            </h2>
+            <header className={styles.header}>
+                <h1>Docs</h1>
 
-                            <ul className={styles.sidebar__list}>
-                                {group.links.map(link => (
-                                    <li key={link.id}>
-                                        <a
-                                            href={`#${link.id}`}
-                                            className={[
-                                                styles.sidebar__link,
-                                                activeSection === link.id
-                                                    ? styles.active
-                                                    : ''
-                                            ].filter(Boolean).join(' ')}
-                                            aria-current={
-                                                activeSection === link.id
-                                                    ? 'location'
-                                                    : undefined
-                                            }
-                                            onClick={(event) =>
-                                                handleNavigation(
-                                                    event,
-                                                    link.id
-                                                )
-                                            }
-                                        >
-                                            {link.label}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </nav>
-            </aside>
+                <span className={styles.updated}>
+                    Last updated: November 4, 2026
+                </span>
+            </header>
 
-            <div className={styles.docs__content}>
-                <Hero />
+            <div className={styles.layout}>
+                <aside
+                    className={styles.sidebar}
+                    aria-label="Documentation sidebar"
+                >
+                    <span className={styles.sidebar__title}>
+                        ON THIS PAGE
+                    </span>
 
-                <div className={styles.docs__body}>
+                    <br/>
+                    
+                    <nav aria-label="Documentation navigation">
+                        {navigation.map(group => (
+                            <div
+                                key={group.title}
+                                className={styles.sidebar__group}
+                            >
+                                <h2 className={styles.sidebar__title}>
+                                    {group.title}
+                                </h2>
+
+                                <ul className={styles.sidebar__list}>
+                                    {group.links.map(link => (
+                                        <li key={link.id}>
+                                            <a
+                                                href={`#${link.id}`}
+                                                className={
+                                                    activeSection === link.id
+                                                        ? styles.active
+                                                        : ''
+                                                }
+                                                onClick={(event) =>
+                                                    handleNavigation(
+                                                        event,
+                                                        link.id
+                                                    )
+                                                }
+                                            >
+                                                {link.label}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </nav>
+                </aside>
+
+                <article className={styles.content}>
                     <section
                         id="introduction"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Introduction
-                        </h2>
+                        <h2>Introduction</h2>
 
                         <p>
                             Welcome to Cosmit Avatars, an open-source
@@ -202,26 +205,21 @@ export default function Docs () {
                         </p>
 
                         <p>
-                            This resource was developed by <code>
+                            This resource was developed by{' '}
                             <a
-                                className={ styles.blank__link }
                                 href="https://github.com/GaboCts"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >Gabriel
-                            </a>
-                            </code> to make the task of obtaining an avatar
+                            </a> to make the task of obtaining an avatar
                             and using it for various applications easier.
                         </p>
                     </section>
 
                     <section
                         id="overview"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Overview
-                        </h2>
+                        <h2>Overview</h2>
 
                         <p>
                             Cosmit Avatars organizes avatar retrieval
@@ -256,11 +254,8 @@ export default function Docs () {
 
                     <section
                         id="quick-start"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Quick Start
-                        </h2>
+                        <h2>Quick Start</h2>
 
                         <p>
                             The easiest way to use Cosmit Avatars is
@@ -270,16 +265,13 @@ export default function Docs () {
 
                         <p>
                             For example, the following URL requests
-                            the Twitch avatar for the username
-                            <code>
-                                <a
-                                    className={ styles.blank__link }
-                                    href="https://cosmitavatars.space/avatar/twitch/xcosmo_"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                > xCosmo_
-                                </a>
-                            </code>.
+                            the Twitch avatar for the username{' '}
+                            <a
+                                href="https://cosmitavatars.space/avatar/twitch/xcosmo_"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >xCosmo_
+                            </a>.
                         </p>
 
                         <pre>
@@ -310,11 +302,8 @@ export default function Docs () {
 
                     <section
                         id="supported-providers"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Supported Providers
-                        </h2>
+                        <h2>Supported Providers</h2>
 
                         <p>
                             Cosmit Avatars supports avatar retrieval
@@ -343,7 +332,8 @@ export default function Docs () {
                         </p>
 
                         <pre>
-                            <a href="https://cosmitavatars.space/providers"
+                            <a
+                                href="https://cosmitavatars.space/providers"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             ><code>{`https://cosmitavatars.space/providers`}</code>
@@ -371,11 +361,8 @@ export default function Docs () {
 
                     <section
                         id="provider-details"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Provider Details
-                        </h2>
+                        <h2>Provider Details</h2>
 
                         <p>
                             Each provider has a dedicated endpoint
@@ -414,11 +401,8 @@ export default function Docs () {
 
                     <section
                         id="url-structure"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            URL Structure
-                        </h2>
+                        <h2>URL Structure</h2>
 
                         <p>
                             Avatar URLs follow this general pattern:
@@ -431,9 +415,8 @@ export default function Docs () {
                         </pre>
 
                         <p>
-                            The <code className={ styles.blank__link }>provider</code> accepts any entry within the list of
+                            The provider accepts any entry within the list of{' '}
                             <a
-                                className={ styles.blank__link }
                                 href="#supported-providers"
                                 onClick={(event) =>
                                     handleNavigation(
@@ -441,7 +424,7 @@ export default function Docs () {
                                         'supported-providers'
                                     )
                                 }
-                            > providers</a>.
+                            >providers</a>.
                         </p>
 
                         <p>
@@ -469,11 +452,8 @@ export default function Docs () {
 
                     <section
                         id="retrieving-avatars"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Retrieving Avatars
-                        </h2>
+                        <h2>Retrieving Avatars</h2>
 
                         <p>
                             You can use avatar URLs wherever an image
@@ -485,8 +465,8 @@ export default function Docs () {
 
                         <pre>
                             <code>{`<img
-  src="https://cosmitavatars.space/avatar/twitch/xcosmo_"
-  alt="Twitch profile avatar"
+    src="https://cosmitavatars.space/avatar/twitch/xcosmo_"
+    alt="Twitch profile avatar"
 />`}</code>
                         </pre>
 
@@ -547,11 +527,8 @@ export default function App () {
 
                     <section
                         id="examples"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Examples
-                        </h2>
+                        <h2>Examples</h2>
 
                         <p>
                             The following examples demonstrate how
@@ -588,11 +565,8 @@ export default function App () {
 
                     <section
                         id="contributing"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Contributing
-                        </h2>
+                        <h2>Contributing</h2>
 
                         <p>
                             Contributions help improve Cosmit Avatars
@@ -606,46 +580,38 @@ export default function App () {
 
                     <section
                         id="license"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            License
-                        </h2>
+                        <h2>License</h2>
 
                         <p>
                             Cosmit Avatars is an open-source project.
                             The permissions and conditions for using,
                             modifying, and redistributing the software
                             are defined by the license included in
-                            the
+                            the{' '}
                             <a
-                                className={ styles.blank__link }
                                 href="https://github.com/GaboCts/cosmit-avatars-web"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                            > source repository</a>.
+                            >source repository</a>.
                         </p>
 
                         <p>
-                            Please review the project's
+                            Please review the project's{' '}
                             <a
-                                className={ styles.blank__link }
                                 href="https://github.com/GaboCts/cosmit-avatars-web/blob/main/LICENSE.md"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                            > LICENSE </a>
-                            file before redistributing the software
+                            >LICENSE</a>
+                            {' '}file before redistributing the software
                             or derivative works.
                         </p>
                     </section>
 
                     <section
                         id="acknowledgements"
-                        className={styles.section}
                     >
-                        <h2 className={styles.section__title}>
-                            Acknowledgements
-                        </h2>
+                        <h2>Acknowledgements</h2>
 
                         <p>
                             Cosmit Avatars builds on the work of
@@ -660,7 +626,7 @@ export default function App () {
                             not imply endorsement.
                         </p>
                     </section>
-                </div>
+                </article>
             </div>
         </main>
     )

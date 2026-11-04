@@ -562,7 +562,6 @@ export default function TermsOfService () {
                         <p className={styles.placeholder}>
                             <strong>Operator:</strong>
                             <a
-                                className={ styles.blank__link }
                                 href="https://github.com/GaboCts"
                                 target="_blank"
                                 rel="noopener noreferrer"

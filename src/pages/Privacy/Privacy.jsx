@@ -444,7 +444,6 @@ export default function Privacy () {
                         <div className={styles.notice}>
                             <strong>Data Controller / Operator:</strong>
                             <a
-                                className={ styles.blank__link }
                                 href="https://github.com/GaboCts"
                                 target="_blank"
                                 rel="noopener noreferrer"
