@@ -18,23 +18,21 @@ const sections = [
     { id: 'indemnification', title: 'Indemnification' },
     { id: 'privacy', title: 'Privacy' },
     { id: 'changes', title: 'Changes to These Terms' },
-    { id: 'governing-law', title: 'Governing Law' },
-    { id: 'severability', title: 'Severability' },
     { id: 'contact', title: 'Contact Information' }
 ]
 
-export default function TermsOfService() {
+export default function TermsOfService () {
     const [activeSection, setActiveSection] = useState('acceptance')
     const { providers, setProviders, setProvidersError, setIsLoadingProviders } = useProviderStore()
 
     useEffect(() => {
-            fetchProviders()
-                .then(data => {
-                    setProviders(data)
-                })
-                .catch(err => setProvidersError(err.message))
-                .finally(() => setIsLoadingProviders())
-        }, [])
+        fetchProviders()
+            .then(data => {
+                setProviders(data)
+            })
+            .catch(err => setProvidersError(err.message))
+            .finally(() => setIsLoadingProviders())
+    }, [])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -93,7 +91,7 @@ export default function TermsOfService() {
                 </p>
 
                 <span className={styles.updated}>
-                    Last updated: November 2, 2026
+                    Last updated: November 3, 2026
                 </span>
             </header>
 
@@ -536,39 +534,8 @@ export default function TermsOfService() {
                         </p>
                     </section>
 
-                    <section id="governing-law">
-                        <h2>13. Governing Law</h2>
-
-                        <p>
-                            These Terms shall be governed by and
-                            interpreted in accordance with the laws
-                            of <strong>[]</strong>,
-                            without regard to conflict-of-law principles.
-                        </p>
-
-                        <p>
-                            Any disputes arising from or relating
-                            to these Terms shall be handled by the
-                            competent courts of{' '}
-                            <strong>[]</strong>,
-                            subject to applicable consumer protection
-                            laws and mandatory legal provisions.
-                        </p>
-                    </section>
-
-                    <section id="severability">
-                        <h2>14. Severability</h2>
-
-                        <p>
-                            If any provision of these Terms is found
-                            to be invalid or unenforceable, the remaining
-                            provisions shall remain in full force
-                            and effect.
-                        </p>
-                    </section>
-
                     <section id="contact">
-                        <h2>15. Contact Information</h2>
+                        <h2>13. Contact Information</h2>
 
                         <p>
                             If you have questions, concerns, or
@@ -593,8 +560,13 @@ export default function TermsOfService() {
                         </div>
 
                         <p className={styles.placeholder}>
-                            Operator: GaboCts
-                            <br />
+                            <strong>Operator:</strong>
+                            <a
+                                href="https://github.com/GaboCts"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Gabriel
+                            </a>
                         </p>
                     </section>
 
@@ -603,9 +575,15 @@ export default function TermsOfService() {
                             Thank you for using Cosmit Avatars.
                         </p>
 
-                        <Link to="/">
-                            Back to home
-                        </Link>
+                        <div>
+                            <Link to="/privacy-policy">
+                                Privacy Policy
+                            </Link>
+
+                            <Link to="/">
+                                Back to home
+                            </Link>
+                        </div>
                     </footer>
                 </article>
             </div>

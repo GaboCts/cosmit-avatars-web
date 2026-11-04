@@ -206,10 +206,23 @@
 }
 
 .placeholder {
-    padding: 16px;
+    margin: 24px 0;
+    padding: 18px 20px;
+    border: 1px solid var(--border-color, #303038);
     border-left: 3px solid var(--primary-color, #8b5cf6);
-    background: var(--active-background, rgb(139 92 246 / 6%));
-    font-size: 0.85rem;
+    border-radius: 8px;
+    background: var(--card-background, rgb(255 255 255 / 2%));
+}
+
+.placeholder strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.88rem;
+}
+
+.placeholder p {
+    margin: 0;
+    font-size: 0.88rem;
 }
 
 /* Footer */
@@ -228,6 +241,12 @@
     margin: 0;
     color: var(--text-secondary, #85858f);
     font-size: 0.85rem;
+}
+
+.footer div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .footer a {
